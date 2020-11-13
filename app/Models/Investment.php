@@ -18,7 +18,7 @@ class Investment extends Model {
 
     public function strategy() {
 
-        return $this->morphTo();
+        return $this->belongsTo('App\Models\Strategy');
     }
 
     public function user() {

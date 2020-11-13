@@ -15,6 +15,6 @@ class Strategy extends Model {
 
     public function investments() {
 
-        return $this->morphMany('App\Models\Investments', 'investment');
+        return $this->hasMany('App\Models\Investment', 'strategy_id');
     }
 }

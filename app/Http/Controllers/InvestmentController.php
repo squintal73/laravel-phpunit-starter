@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\InvestmentResource;
 use App\Models\Investment;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -25,11 +24,11 @@ class InvestmentController extends Controller {
             ]
         );
         $requestArray['successful'] = (bool)random_int(0, 1);
-        $user = User::find($requestArray['user_id']);
-        $user->investments()->create($requestArray);
+
+        $investment = Investment::create($requestArray);
 
         return response()->json(
-            new InvestmentResource($user->investments()->latest()->first()),
+            new InvestmentResource($investment),
             Response::HTTP_CREATED
         );
 

@@ -21,6 +21,6 @@ class User extends Model {
 
     public function investments() {
 
-        return $this->hasMany('App\Models\Investment');
+        return $this->hasMany('App\Models\Investment', 'user_id');
     }
 }

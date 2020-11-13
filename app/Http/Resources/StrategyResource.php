@@ -14,6 +14,7 @@ class StrategyResource extends JsonResource {
             'tenure'     => $this->tenure,
             'yield'      => $this->yield,
             'relief'     => $this->relief,
+            'investments' => InvestmentResource::collection($this->investments),
             'created_at' => (string)$this->created_at,
             'updated_at' => (string)$this->updated_at,
         ];
