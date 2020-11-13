@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\StrategyController;
+use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,3 +25,4 @@ Route::middleware('auth:api')->get(
 );
 
 Route::apiResource('strategy', StrategyController::class);
+Route::apiResource('user', UserController::class);
