@@ -9,7 +9,7 @@ class WalletResource extends JsonResource {
     public function toArray($request) {
 
         return [
-            'balance'      => $this->type,
+            'balance'      => $this->balance,
             'last_updated' => (string)$this->updated_at,
         ];
     }
