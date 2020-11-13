@@ -17,6 +17,7 @@ class CreateInvestmentsTable extends Migration {
                 $table->foreignId('strategy_id')->constrained();
                 $table->boolean('successful');
                 $table->decimal('amount');
+                $table->decimal('returns');
                 $table->timestamp('created_at')->useCurrent();
                 $table->timestamp('updated_at')->useCurrent();
             }

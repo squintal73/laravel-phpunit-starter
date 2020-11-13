@@ -14,6 +14,7 @@ class Investment extends Model {
         'strategy_id',
         'successful',
         'amount',
+        'returns'
     ];
 
     public function strategy() {

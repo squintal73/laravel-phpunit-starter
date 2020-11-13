@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\InvestmentResource;
 use App\Models\Investment;
+use App\Models\Strategy;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
@@ -23,8 +24,15 @@ class InvestmentController extends Controller {
                 'amount',
             ]
         );
-        $requestArray['successful'] = (bool)random_int(0, 1);
 
+        $successful = (bool)random_int(0, 1);
+        $requestArray['successful'] = $successful;
+
+        $strategy = Strategy::find($requestArray['strategy_id']);
+        $multiplier = $successful ?
+            $strategy->yield :
+            $strategy->relief;
+        $requestArray['returns'] = $requestArray['amount'] * $multiplier;
         $investment = Investment::create($requestArray);
 
         return response()->json(
