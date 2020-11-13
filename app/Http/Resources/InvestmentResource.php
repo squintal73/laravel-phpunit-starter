@@ -10,7 +10,7 @@ class InvestmentResource extends JsonResource {
 
         return [
             'user'       => $this->user,
-            'strategy'   => $this->strategy,
+            'strategy'   => new StrategyResource($this->strategy),
             'successful' => $this->successful,
             'amount'     => $this->amount,
             'created_at' => $this->created_at,
