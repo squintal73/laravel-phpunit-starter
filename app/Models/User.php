@@ -21,6 +21,6 @@ class User extends Model {
 
     public function investments() {
 
-        return $this->morphMany('App\Models\Investment', 'user');
+        return $this->hasMany('App\Models\Investment');
     }
 }

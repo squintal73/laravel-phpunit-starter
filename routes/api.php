@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\InvestmentController;
 use App\Http\Controllers\StrategyController;
 use App\Http\Controllers\UserController;
 use Illuminate\Http\Request;
@@ -26,3 +27,4 @@ Route::middleware('auth:api')->get(
 
 Route::apiResource('strategy', StrategyController::class);
 Route::apiResource('user', UserController::class);
+Route::apiResource('investment', InvestmentController::class);

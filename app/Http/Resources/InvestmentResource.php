@@ -9,11 +9,11 @@ class InvestmentResource extends JsonResource {
     public function toArray($request) {
 
         return [
-            'user'       => $this->user,
+            'user'       => new UserResource($this->user),
             'strategy'   => new StrategyResource($this->strategy),
             'successful' => $this->successful,
             'amount'     => $this->amount,
-            'created_at' => $this->crceated_at,
+            'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ];
     }

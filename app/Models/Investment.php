@@ -9,6 +9,13 @@ class Investment extends Model {
 
     use HasFactory;
 
+    protected $fillable = [
+        'user_id',
+        'strategy_id',
+        'successful',
+        'amount',
+    ];
+
     public function strategy() {
 
         return $this->morphTo();
@@ -16,6 +23,6 @@ class Investment extends Model {
 
     public function user() {
 
-        return $this->morphTo();
+        return $this->belongsTo('App\Models\User');
     }
 }
