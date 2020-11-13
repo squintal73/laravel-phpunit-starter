@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateWalletsTable extends Migration {
 
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up() {
 
         Schema::create(
@@ -20,16 +15,12 @@ class CreateWalletsTable extends Migration {
                 $table->id();
                 $table->decimal('balance');
                 $table->foreignId('user_id')->constrained();
-                $table->timestamps();
+                $table->timestamp('created_at')->useCurrent();
+                $table->timestamp('updated_at')->useCurrent();
             }
         );
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down() {
 
         Schema::dropIfExists('wallets');
