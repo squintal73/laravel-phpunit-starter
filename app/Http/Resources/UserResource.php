@@ -13,7 +13,6 @@ class UserResource extends JsonResource {
             'first_name' => $this->first_name,
             'last_name'  => $this->last_name,
             'created_at' => (string)$this->created_at,
-            'updated_at' => (string)$this->updated_at,
             'wallet'     => new WalletResource($this->wallet)
         ];
     }

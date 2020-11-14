@@ -16,7 +16,6 @@ class InvestmentResource extends JsonResource {
             'amount'      => $this->amount,
             'returns'     => $this->returns,
             'created_at'  => $this->created_at,
-            'updated_at'  => $this->updated_at,
         ];
     }
 }
