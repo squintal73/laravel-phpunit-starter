@@ -11,7 +11,10 @@ class StrategyController extends Controller {
 
     public function index() {
 
-        return StrategyResource::collection(Strategy::all());
+        return response()->json(
+            StrategyResource::collection(Strategy::all())
+        );
+
     }
 
     public function store(Request $request) {
@@ -26,7 +29,10 @@ class StrategyController extends Controller {
 
     public function show(Strategy $strategy) {
 
-        return new StrategyResource($strategy);
+        return response()->json(
+            new StrategyResource($strategy)
+        );
+
     }
 
     public function update(Request $request, Strategy $strategy) {
@@ -42,7 +48,10 @@ class StrategyController extends Controller {
             )
         );
 
-        return new StrategyResource($strategy);
+        return response()->json(
+            new StrategyResource($strategy)
+        );
+
     }
 
     public function destroy(Strategy $strategy) {

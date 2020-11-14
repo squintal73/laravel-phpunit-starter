@@ -12,7 +12,10 @@ class UserController extends Controller {
 
     public function index() {
 
-        return UserResource::collection(User::all());
+        return response()->json(
+            UserResource::collection(User::all())
+        );
+
     }
 
     public function store(Request $request) {
@@ -38,7 +41,10 @@ class UserController extends Controller {
 
     public function show(User $user) {
 
-        return new UserResource($user);
+        return response()->json(
+            new UserResource($user)
+        );
+
     }
 
     public function update(Request $request, User $user) {
@@ -52,7 +58,9 @@ class UserController extends Controller {
             )
         );
 
-        return new UserResource($user);
+        return response()->json(
+            new UserResource($user)
+        );
     }
 
     public function destroy(User $user) {

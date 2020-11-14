@@ -12,7 +12,10 @@ class InvestmentController extends Controller {
 
     public function index() {
 
-        return InvestmentResource::collection(Investment::all());
+        return response()->json(
+            InvestmentResource::collection(Investment::all())
+        );
+
     }
 
     public function store(Request $request) {
@@ -44,7 +47,10 @@ class InvestmentController extends Controller {
 
     public function show(Investment $investment) {
 
-        return new InvestmentResource($investment);
+        return response()->json(
+            new InvestmentResource($investment)
+        );
+
     }
 
     public function update() {
@@ -61,7 +67,7 @@ class InvestmentController extends Controller {
 
         return response()->json(
             [
-                'error' => 'You can\'t delet an investment'
+                'error' => 'You can\'t delete an investment'
             ],
             Response::HTTP_UNAUTHORIZED
         );
