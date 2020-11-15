@@ -12,7 +12,7 @@ class InvestmentController extends Controller {
 
     public function index() {
 
-        return response()->json(
+        return $this->successResponse(
             InvestmentResource::collection(Investment::all())
         );
 
@@ -38,16 +38,16 @@ class InvestmentController extends Controller {
         $requestArray['returns'] = $requestArray['amount'] * $multiplier;
         $investment = Investment::create($requestArray);
 
-        return response()->json(
+        return $this->successResponse(
             new InvestmentResource($investment),
-            Response::HTTP_CREATED
+            true
         );
 
     }
 
     public function show(Investment $investment) {
 
-        return response()->json(
+        return $this->successResponse(
             new InvestmentResource($investment)
         );
 
@@ -55,20 +55,16 @@ class InvestmentController extends Controller {
 
     public function update() {
 
-        return response()->json(
-            [
-                'error' => 'You can\'t update an investment'
-            ],
+        return $this->errorResponse(
+            'You can\'t update an investment',
             Response::HTTP_UNAUTHORIZED
         );
     }
 
     public function destroy() {
 
-        return response()->json(
-            [
-                'error' => 'You can\'t delete an investment'
-            ],
+        return $this->errorResponse(
+            'You can\'t delete an investment',
             Response::HTTP_UNAUTHORIZED
         );
     }

@@ -5,13 +5,12 @@ namespace App\Http\Controllers;
 use App\Http\Resources\StrategyResource;
 use App\Models\Strategy;
 use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class StrategyController extends Controller {
 
     public function index() {
 
-        return response()->json(
+        return $this->successResponse(
             StrategyResource::collection(Strategy::all())
         );
 
@@ -21,15 +20,15 @@ class StrategyController extends Controller {
 
         $strategy = Strategy::create($request->all());
 
-        return response()->json(
+        return $this->successResponse(
             new StrategyResource($strategy),
-            Response::HTTP_CREATED
+            true
         );
     }
 
     public function show(Strategy $strategy) {
 
-        return response()->json(
+        return $this->successResponse(
             new StrategyResource($strategy)
         );
 
@@ -48,7 +47,7 @@ class StrategyController extends Controller {
             )
         );
 
-        return response()->json(
+        return $this->successResponse(
             new StrategyResource($strategy)
         );
 
@@ -58,9 +57,6 @@ class StrategyController extends Controller {
 
         $strategy->delete();
 
-        return response()->json(
-            null,
-            Response::HTTP_NO_CONTENT
-        );
+        return $this->deleteResponse();
     }
 }
