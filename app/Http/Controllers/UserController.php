@@ -22,7 +22,8 @@ class UserController extends Controller {
         $user = User::create(
             [
                 'first_name' => $request->get('first_name'),
-                'last_name'  => $request->get('last_name')
+                'last_name' => $request->get('last_name'),
+                'email'  => $request->get('email')
             ]
         );
         Wallet::create(
