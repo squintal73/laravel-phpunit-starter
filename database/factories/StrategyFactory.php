@@ -23,8 +23,8 @@ class StrategyFactory extends Factory {
         return [
             'type'   => $this->faker->randomElement($strategyTypes),
             'tenure' => $this->faker->numberBetween(1, 10),
-            'yield'  => $this->faker->numberBetween(1, 10000) * 0.01,
-            'relief' => $this->faker->numberBetween(1, 100) * 0.001
+            'yield'  => round($this->faker->numberBetween(1, 10000) * 0.01, 2, PHP_ROUND_HALF_UP),
+            'relief' => round($this->faker->numberBetween(1, 100) * 0.001, 2, PHP_ROUND_HALF_UP)
         ];
     }
 }
