@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\InvestmentResource;
 use App\Http\Resources\UserResource;
 use App\Models\User;
 use App\Models\Wallet;
@@ -22,8 +23,8 @@ class UserController extends Controller {
         $user = User::create(
             [
                 'first_name' => $request->input('first_name'),
-                'last_name' => $request->input('last_name'),
-                'email'  => $request->input('email')
+                'last_name'  => $request->input('last_name'),
+                'email'      => $request->input('email')
             ]
         );
         Wallet::create(
@@ -53,13 +54,23 @@ class UserController extends Controller {
             $request->only(
                 [
                     'first_name',
-                    'last_name'
+                    'last_name',
+                    'email'
                 ]
             )
         );
 
         return $this->successResponse(
             new UserResource($user)
+        );
+    }
+
+    public function investments(User $user) {
+
+        $userInvestments = $user->investments;
+
+        return $this->successResponse(
+            InvestmentResource::collection($userInvestments)
         );
     }
 

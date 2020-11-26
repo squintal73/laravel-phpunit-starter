@@ -12,10 +12,10 @@ class InvestmentResource extends JsonResource {
             'id'          => $this->id,
             'user_id'     => $this->user->id,
             'strategy_id' => $this->strategy->id,
-            'successful'  => (bool)$this->successful,
+            'successful'  => $this->successful,
             'amount'      => $this->amount,
             'returns'     => $this->returns,
-            'created_at'  => $this->created_at,
+            'created_at'  => (string)$this->created_at,
         ];
     }
 }
