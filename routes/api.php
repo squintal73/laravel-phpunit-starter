@@ -24,7 +24,13 @@ Route::middleware('auth:api')->get(
         return $request->user();
     }
 );
-
+Route::get(
+    'user/{user}/investments',
+    [
+        UserController::class,
+        'investments'
+    ]
+);
 Route::apiResource('strategy', StrategyController::class);
 Route::apiResource('user', UserController::class);
 Route::apiResource('investment', InvestmentController::class);
