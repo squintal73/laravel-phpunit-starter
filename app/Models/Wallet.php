@@ -11,6 +11,11 @@ class Wallet extends Model {
 
     protected $fillable = ['balance', 'user_id'];
 
+    protected $casts = [
+        'balance' => 'float',
+        'user_id' => 'integer'
+    ];
+
     public function user() {
 
         return $this->belongsTo('App\Models\User');

@@ -17,6 +17,14 @@ class Investment extends Model {
         'returns'
     ];
 
+    protected $casts = [
+        'user_id'     => 'integer',
+        'strategy_id' => 'integer',
+        'successful'  => 'boolean',
+        'amount'      => 'float',
+        'returns'     => 'float'
+    ];
+
     public function strategy() {
 
         return $this->belongsTo('App\Models\Strategy');
