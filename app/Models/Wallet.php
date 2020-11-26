@@ -16,6 +16,18 @@ class Wallet extends Model {
         'user_id' => 'integer'
     ];
 
+    public static function boot() {
+
+        parent::boot();
+        self::saving(
+            function (Wallet $wallet) {
+
+                $roundedBalance = round($wallet->balance, 2, PHP_ROUND_HALF_UP);
+                $wallet->balance = $roundedBalance;
+            }
+        );
+    }
+
     public function user() {
 
         return $this->belongsTo('App\Models\User');

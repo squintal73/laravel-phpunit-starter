@@ -23,6 +23,20 @@ class Strategy extends Model {
         'relief' => 'float',
     ];
 
+    public static function boot() {
+
+        parent::boot();
+        self::saving(
+            function (Strategy $strategy) {
+
+                $roundedYield = round($strategy->yield, 2, PHP_ROUND_HALF_UP);
+                $roundedRelief = round($strategy->relief, 2, PHP_ROUND_HALF_UP);
+                $strategy->yield = $roundedYield;
+                $strategy->relief = $roundedRelief;
+            }
+        );
+    }
+
     public function investments() {
 
         return $this->hasMany('App\Models\Investment', 'strategy_id');

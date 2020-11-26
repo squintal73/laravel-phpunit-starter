@@ -25,6 +25,20 @@ class Investment extends Model {
         'returns'     => 'float'
     ];
 
+    public static function boot() {
+
+        parent::boot();
+        self::saving(
+            function (Investment $investment) {
+
+                $roundedAmount = round($investment->amount, 2, PHP_ROUND_HALF_UP);
+                $roundedReturns = round($investment->returns, 2, PHP_ROUND_HALF_UP);
+                $investment->amount = $roundedAmount;
+                $investment->returns = $roundedReturns;
+            }
+        );
+    }
+
     public function strategy() {
 
         return $this->belongsTo('App\Models\Strategy');
@@ -34,4 +48,5 @@ class Investment extends Model {
 
         return $this->belongsTo('App\Models\User');
     }
+
 }
